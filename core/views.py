@@ -65,7 +65,7 @@ class InstalacaoUpdate(LoginMixin, UpdateView, SuccessMessageMixin):
             return redirect(reverse('core:instalacao_add'))
 
 
-class InstalacaoDelete(DeleteView):
+class InstalacaoDelete(LoginMixin, DeleteView):
     model = Instalacao
     success_url = '/instalacoes/'
 
