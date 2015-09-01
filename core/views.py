@@ -30,16 +30,11 @@ class InstalacaoCreate(LoginMixin, CreateView, SuccessMessageMixin):
     success_url = '/instalacoes/'
     fields = ['sigla', 'descricao', 'orgao', 'cidade']
 
-    def dispatch(self, *args, **kwargs):
-        return super(InstalacaoCreate, self).dispatch(*args, **kwargs)
-
 
 class InstalacaoList(LoginMixin, ListView):
     model = Instalacao
 
-    def dispatch(self, *args, **kwargs):
-        return super(InstalacaoList, self).dispatch(*args, **kwargs)
-
+    
     def get(self, request, *args, **kwargs):
         if Instalacao.objects.count() > 0:
             return super(InstalacaoList, self).get(request, *args, **kwargs)
@@ -50,10 +45,7 @@ class InstalacaoList(LoginMixin, ListView):
 class InstalacaoDetail(LoginMixin, DetailView):
     model = Instalacao
 
-    def dispatch(self, *args, **kwargs):
-        return super(InstalacaoDetail, self).dispatch(*args, **kwargs)
-
-
+    
     def get(self, request, *args, **kwargs):
         if Instalacao.objects.count() > 0:
             return super(InstalacaoDetail, self).get(request, *args, **kwargs)
