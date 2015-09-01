@@ -139,7 +139,7 @@ class TipoDeEquipamentoDetail(LoginMixin, DetailView):
         else:
             return redirect(reverse('core:tipodeequipamento_add'))
 
-class EquipamentoList(ListView):
+class EquipamentoList(LoginMixin, ListView):
     model = Equipamento
 
     def get(self, request, *args, **kwargs):
@@ -166,7 +166,7 @@ class EquipamentoDelete(LoginMixin, DeleteView):
     success_url = '/equipamento/'
 
 
-class FuncionarioList(ListView):
+class FuncionarioList(LoginMixin, ListView):
     model = Funcionario
 
     def get(self, request, *args, **kwargs):
