@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load helper %}
+
+{% block content %}
+
+      <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Formulário de Instalações</h1>
+        </div>
+                <!-- /.col-lg-12 -->
+    </div>
+
+    <form method="post" role="form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for campo in form %}
+            <div class="form-group {% if campo.errors %}has-error{% endif %}">
+                <label class="control-label">{{ campo.label }}</label>
+                {{ campo|addclass:"form-control"}}
+
+                <p class="help-block">{{ campo.help_text }}</p>
+
+                {% if campo.errors %}
+                    {% for error in campo.errors %}
+                        <p class="help-block">{{ error }}</p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        {% endfor %}
+        <input type="submit" class="btn btn-primary btn-lg" value="Confirmar">
+    </form>
+
+{% endblock %}
