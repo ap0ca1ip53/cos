@@ -98,7 +98,7 @@ class EquipeUpdate(LoginMixin, UpdateView):
             return redirect(reverse('core:equipe_add'))
 
 
-class EquipeDelete(DeleteView):
+class EquipeDelete(LoginMixin, DeleteView):
     model = Equipe
     success_url = '/equipes/'
 
